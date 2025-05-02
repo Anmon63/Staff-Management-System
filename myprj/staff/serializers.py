@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from staff.models import Staff_Profile
 
 class Staff_Profile_szr(serializers.ModelSerializer):
     class Meta:

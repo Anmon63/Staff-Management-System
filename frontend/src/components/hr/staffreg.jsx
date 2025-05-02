@@ -10,7 +10,7 @@ const StaffReg = () => {
     const [joiningDate, setJoiningDate] = useState("");
     const [role, setRole] = useState("");
 
-    const StaffReg = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (!name || !email || !phone || !position || !joiningDate || !role) {
             alert("Please fill in all fields.");
@@ -22,10 +22,10 @@ const StaffReg = () => {
             email: email,
             phone: phone,
             position: position,
-            joiningDate: joiningDate,
+            join_date: joiningDate,
             role: role,
         };
-        fetch("",{
+        fetch("http://127.0.0.1:8000/staff/api/staff/",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const StaffReg = () => {
     return (
         <div>
             <h1>Staff Registration</h1>
-            <form onSubmit={StaffReg} className="staff-reg-form">
+            <form onSubmit={handleSubmit} className="staff-reg-form">
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} required />
                 <br />
@@ -69,6 +69,7 @@ const StaffReg = () => {
                     <option value="admin">Admin</option>
                     <option value="hr">HR</option>
                     <option value="management">Management</option>
+                    <option value="teamlead">Team Lead</option>
                     <option value="staff">Staff</option>
                 </select>
                 <br />

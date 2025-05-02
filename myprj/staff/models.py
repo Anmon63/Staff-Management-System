@@ -1,4 +1,7 @@
 from django.db import models
+import random
+import string
+
 
 
 ROLE_CHOICES = [
@@ -6,8 +9,9 @@ ROLE_CHOICES = [
     ('hr', 'HR'),
     ('management', 'Management'),
     ('teamlead', 'Team Lead'),
-    ('staff', 'Staff')
+    ('staff', 'Staff'),
 ]
+
 class Staff_Profile(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()

@@ -1,3 +1,6 @@
 from django.urls import path
+from .views import staff_profile
 
-path('/')
+urlpatterns = [
+    path('api/staff/', staff_profile, name='staff-create'),
+]
