@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"; 
 
-function AdminHome() {
+function ManagementHome() {
   const navigate = useNavigate();
 
   const getStaff = () => {
@@ -8,16 +8,7 @@ function AdminHome() {
     console.log("Fetching staff...");
     navigate("/StaffDetails");
   };
-  const getHR = () => {
-    // your logic to fetch HR goes here
-    console.log("Fetching HR...");
-    navigate("/HRDetails");
-  };
-  const staffReg = () => {
-    // your logic to register staff goes here
-    console.log("Registering staff...");
-    navigate("/StaffReg");
-  };
+  
   const logout = () => {
     localStorage.removeItem("user");
     navigate("/");
@@ -28,8 +19,6 @@ function AdminHome() {
       <table>
         <tr>
           <td><button onClick={getStaff}>Staff Details</button></td>
-          <td><button onClick={getHR}>HR Details</button></td>
-          <td><button onClick={staffReg}>Staff Registration</button></td>
           <td><button onClick={logout}>Logout</button></td>
         </tr>
       </table>
@@ -37,4 +26,4 @@ function AdminHome() {
   );
 }
 
-export default AdminHome;
+export default ManagementHome;

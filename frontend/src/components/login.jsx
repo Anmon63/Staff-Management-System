@@ -16,6 +16,8 @@ const Login = () => {
             });
         console.log("Login response:", response.data);
         localStorage.setItem("user", JSON.stringify(response.data));  // // Optionally store user info in local storage/session
+        localStorage.setItem("userRole", response.data.role);
+
         setRole("staff"); // Reset role to default after login
         setUsername("");
         setPassword("");

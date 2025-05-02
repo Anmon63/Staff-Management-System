@@ -12,14 +12,12 @@ function StaffDetails() {
   const getStaff = () => {
     axios.get('http://localhost:8000/staff/api/staffdet/')
     .then(res=>{
-        const filtered = res.data.filter(item => item.role === "staff")
+        const filtered = res.data.filter(item => item.role === "hr")
         setStaff(filtered)
         console.log("Filtered Staff Data:", filtered)
         })
     .catch(err=>console.error(err))
 };
-const userRole = localStorage.getItem("userRole");
-
 const handleEdit = (id) => {
     const staffMember = staff.find(item => item.id === id);
     setSelectedStaff(staffMember);
@@ -47,23 +45,23 @@ const handlePasswordUpdate = () => {
 };
 
 const handleDelete = (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this staff member?");
+    const confirmDelete = window.confirm("Are you sure you want to delete this HR member?");
     if (confirmDelete) {
         axios.delete(`http://localhost:8000/staff/api/staffdet/${id}/`)
             .then(() => {
-                alert("Staff member deleted successfully.");
+                alert("HR member deleted successfully.");
                 getStaff(); // Refresh the table
             })
             .catch(err => {
                 console.error("Delete error:", err);
-                alert("Error deleting staff member.");
+                alert("Error deleting hr member.");
             });
     }
 };
 return (
     <>
     <div className="bg2">
-        <h2>Staff Details</h2>
+        <h2>HR Details</h2>
         <div style={{ marginBottom: "10px" }}>
             <label htmlFor="search">Search:</label>
             <input type="text" placeholder="Search by name..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
@@ -103,9 +101,7 @@ return (
                             <td>{item.username}</td>
                             <td>{item.password}</td>
                             <td>
-                            {userRole === "admin" && (
                                 <button onClick={() => handleEdit(item.id)}>Edit Password</button>
-                            )}
                                 <button onClick={() => handleDelete(item.id)}>Delete</button>
                             </td>
                         </tr>

@@ -1,18 +1,8 @@
 import { useNavigate } from "react-router-dom"; 
 
-function AdminHome() {
+function HrHome() {
   const navigate = useNavigate();
 
-  const getStaff = () => {
-    // your logic to fetch staff goes here
-    console.log("Fetching staff...");
-    navigate("/StaffDetails");
-  };
-  const getHR = () => {
-    // your logic to fetch HR goes here
-    console.log("Fetching HR...");
-    navigate("/HRDetails");
-  };
   const staffReg = () => {
     // your logic to register staff goes here
     console.log("Registering staff...");
@@ -27,9 +17,8 @@ function AdminHome() {
     <div>
       <table>
         <tr>
-          <td><button onClick={getStaff}>Staff Details</button></td>
-          <td><button onClick={getHR}>HR Details</button></td>
           <td><button onClick={staffReg}>Staff Registration</button></td>
+            <td><button onClick={() => navigate("/StaffDetails")}>Staff Details</button></td>
           <td><button onClick={logout}>Logout</button></td>
         </tr>
       </table>
@@ -37,4 +26,4 @@ function AdminHome() {
   );
 }
 
-export default AdminHome;
+export default HrHome;
